@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Getting Started with Chart JS with www.chartjs3.com</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Lucida Console", "Courier New", monospace;
+        font-size: 2.5em;
+        font-weight: bold;
+      }
+      .chartMenu {
+        width: 100vw;
+        height: 40px;
+        background:  #E0A2D2;
+        color: rgba(125, 26, 104, 1);
+      }
+      .chartMenu p {
+        padding: 10px;
+        font-size: 20px;
+      }
+      .chartCard {
+        width: 100vw;
+        height: calc(100vh - 40px);
+        background: rgba(251, 173, 174, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .chartBox {
+        width: 700px;
+        padding: 20px;
+        border-radius: 20px;
+        border: solid 3px #000C24;
+        background: rgba(175, 147, 237, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chartMenu">
+      <p>WWW.CHARTJS3.COM (Chart JS 3.8.2)</p>
+    </div>
+    <div class="chartCard">
+      <div class="chartBox">
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js" integrity="sha512-Tfw6etYMUhL4RTki37niav99C6OHwMDB2iBT5S5piyHO+ltK2YX8Hjy9TXxhE1Gm/TmAV0uaykSpnHKFIAif/A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+    // setup 
+    const data = {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: [{
+        label: 'Shirt',
+        data: [100, 90, 70, 50, 44, 32, 20, 60, 25, 35,23,150],
+        backgroundColor: ['#94E5AB ',],
+        borderColor:['#00D262',],
+        borderWidth:1.5  
+        },{
+        label: 'Pants',
+        data: [66, 45, 32, 40, 57, 63, 72, 24, 32, 49, 56, 78],
+        backgroundColor: ['#4EC1B1'],
+        borderColor:['#01AE9A'],
+        borderWidth:1.5        
+      },{
+        label: 'Shoes',
+        data: [50, 60, 36, 48, 52, 43, 49, 50, 34, 64, 64, 80],
+        backgroundColor: ['#208294'],
+        borderColor:['#0281CE'],
+        borderWidth:1.5        
+      },{
+        label: 'Hat',
+        data: [69, 78, 73, 64, 55, 36, 47, 96, 58, 79, 86, 99],
+        backgroundColor: ['#0E5187'],
+        borderColor:['#0C48D0'],
+        borderWidth:1.5        
+      }]
+    };
+
+    // config 
+    const config = {
+      type: 'bar',
+      data,
+      options: {
+        scales: {
+          x:{
+            stacked:true,
+          },
+          y:{
+            stacked:true,
+            beginAtZero: true
+          }
+        }
+      },
+      plugins: [ChartDataLabels]
+    };
+
+    // render init block
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+    </script>
+
+  </body>
+</html>
